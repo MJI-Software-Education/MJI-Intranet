@@ -15,7 +15,7 @@ import { PublicRoutes } from './PublicRoutes';
 export const AppRouter = () => {
     const dispatch = useDispatch();
     const {checking,_id} = useSelector(state => state.auth);
-    console.log(checking);
+    
     useEffect(() => {
         dispatch(renew())
         

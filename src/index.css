@@ -103,4 +103,62 @@ select{
   justify-content: center;
   align-items: center;
 }
+.izquierda{
+  
+  left: 0;
+}
+.sombra{
+  border-radius: 10px;
+  
+  box-shadow: 1px 10px 26px 0px rgba(0,0,0,0.17);
+-webkit-box-shadow: 1px 10px 26px 0px rgba(0,0,0,0.17);
+-moz-box-shadow: 1px 10px 26px 0px rgba(0,0,0,0.17);
+}
+.flexEvenly{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.flexEvenly h1{
+  font-weight: bold;
+  font-size: 20px;
+}
+.true{
+  background-color: #E4F8DD;
+  text-align: center;
+  color: #249B18;
+  font-weight: bold;
+  border-radius: 7px;
+  width: 60px;
+  font-size: 12px;
+  padding: 2px 5px;
+}
+.false{
+  background-color: #FFE2E1;
+  text-align: center;
+  color: #B72136;
+  font-weight: bold;
+  border-radius: 7px;
+  width: 60px;
+  font-size: 12px;
+  padding: 2px 5px;
+}
+.formularios{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.formularios input{
+  border-radius: 5px;
+  border: 2px solid gray;
+  padding: 5px;
+  color: gray;
+  transition-duration: 0.2s;
+  margin-bottom: 10px;
+}
+.formularios input:focus{
+  border: 2px solid green;
+  outline: none;
+  padding: 10px;
+}
 

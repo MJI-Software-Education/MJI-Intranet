@@ -31,6 +31,7 @@ export const fetchConToken = async(endpoint, data, method ='GET') => {
         return await resp.json();
     }else {
         const resp = await fetch(url,{
+            method,
             headers:{
                 'Content-type':'application/json',
                 'x-token':token
