@@ -60,17 +60,10 @@ export const AignaturasPage = () => {
                <input type="text" name="asignatura" value={asignatura} onChange={onChange}  autoComplete="off"  placeholder="Asignatura"  />
                {
                     (!bool) && <Select defaultValue='Seleccione' key={'123'} onChange={changeCurso}   style={{ width: 170 }}  name="idCurso" >
-<<<<<<< Updated upstream
                         {cursos.map(c=>(
                             <Select.Option  key={c.id}   value={c.id}  >{c.curso}-{c.letra}</Select.Option>  
                         ))}   
                     </Select>
-=======
-                    {cursos.map(c=>(
-                        <Select.Option  key={c.id}   value={c.id}  >{c.curso}-{c.letra}</Select.Option>  
-                    ))}   
-                </Select>
->>>>>>> Stashed changes
                 }
                 <br/>
                
