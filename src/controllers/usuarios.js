@@ -5,7 +5,7 @@ import { fetchConToken } from "../helpers/fetch"
 export const dispatchGetUsuarios = ()=>{
     return async(dispatch)=>{
         const resp =await fetchConToken('usuarios/');
-        if(resp){
+        if(resp.ok){
             dispatch(getUsuarios(resp.usuarios));
         }else{
             console.log('Error');
@@ -17,7 +17,7 @@ export const dispatchNewUsuario = (usuario, email, password)=>{
     return async(dispatch)=>{
         const resp =await fetchConToken('usuarios/',{usuario, email, password}, 'POST');
       
-        if(resp){
+        if(resp.ok){
             dispatch(newUsuario(resp.usuario));
         }else{
             Swal.fire('Error',resp.msg,'error');
@@ -29,7 +29,7 @@ export const dispatchEditUsuario = (usuario, email,id)=>{
     return async(dispatch)=>{
         const resp =await fetchConToken(`usuarios/${id}`,{usuario, email}, 'PUT');
        
-        if(resp){
+        if(resp.ok){
             dispatch(editUsuario(resp.usuario));
         }else{
             Swal.fire('Error',resp.msg,'error');
@@ -41,7 +41,7 @@ export const dispatchDeleteUsuario = (id)=>{
     return async(dispatch)=>{
         const resp =await fetchConToken(`usuarios/${id}`,{}, 'DELETE');
        
-        if(resp){
+        if(resp.ok){
             dispatch(editUsuario(resp.usuario));
         }else{
             Swal.fire('Error',resp.msg,'error');
@@ -49,6 +49,7 @@ export const dispatchDeleteUsuario = (id)=>{
 
     }
 } 
+
 
 const getUsuarios = (usuarios) => ({
     type:'getUsuarios',

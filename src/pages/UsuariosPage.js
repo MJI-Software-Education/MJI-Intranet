@@ -59,7 +59,7 @@ export const UsuariosPage = () => {
                 </Modal>
             <div className="flexEvenly">
             <h1>Usuarios</h1>
-            <Boton text='+ New user' backgroundColor='#00AB55' color='white' onClick={onClick} />
+            <Boton text='+ Usuario' backgroundColor='#00AB55' color='white' onClick={onClick} />
             </div>
              <Table columns={columns} dataSource={data} pagination={{pageSize : 5}} scroll={{ x: 300 }}/>
      
