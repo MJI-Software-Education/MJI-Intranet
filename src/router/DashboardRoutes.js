@@ -60,7 +60,7 @@ export const DashBoardRoutes = () => {
                         <Link to='/unidades'>Unidades</Link>
                         </Menu.Item>
                         <Menu.Item key="6" icon={<FolderOpenOutlined />}>
-                        <Link to='/oas'>Oas</Link>
+                        <Link to='/oas'>OAs</Link>
                         </Menu.Item>
                         
                     </Menu>

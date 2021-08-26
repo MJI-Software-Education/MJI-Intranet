@@ -43,14 +43,14 @@ export const AignaturasPage = () => {
     return (
         <div>
             <Modal
-          centered
-          visible={open}
-          closable={true}
-          onCancel={close}
-          okButtonProps={{block:true}}
-          footer={null}
-          width={350}
-        >
+                centered
+                visible={open}
+                closable={true}
+                onCancel={close}
+                okButtonProps={{block:true}}
+                footer={null}
+                width={350}
+            >
            <form className="formularios" >
                 {
                     (bool) ?<h1>Editar</h1> :<h1>Nuevo</h1>
@@ -59,11 +59,11 @@ export const AignaturasPage = () => {
               
                <input type="text" name="asignatura" value={asignatura} onChange={onChange}  autoComplete="off"  placeholder="Asignatura"  />
                {
-                    (!bool) && <Select defaultValue='Seleccione' key={'123'} onChange={(e)=>changeCurso(e)}   style={{ width: 170 }}  name="idCurso" >
-                    {cursos.map(c=>(
-                        <Select.Option  key={c.id}   value={c.id}  >{c.curso}-{c.letra}</Select.Option>  
-                    ))}   
-                </Select>
+                    (!bool) && <Select defaultValue='Seleccione' key={'123'} onChange={changeCurso}   style={{ width: 170 }}  name="idCurso" >
+                        {cursos.map(c=>(
+                            <Select.Option  key={c.id}   value={c.id}  >{c.curso}-{c.letra}</Select.Option>  
+                        ))}   
+                    </Select>
                 }
                 <br/>
                
