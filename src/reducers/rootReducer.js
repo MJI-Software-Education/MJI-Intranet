@@ -5,6 +5,7 @@ import { unitReducer } from './unitReducer';
 import { cursosReducer } from './cursosReducer';
 import { usuariosReducer } from './usuariosReducer';
 import { oaReducer } from './oaReducer';
+import { colegioReducer } from './colegioReducer';
 
 export const rootReducer = combineReducers({
     auth:authReducer,
@@ -12,5 +13,6 @@ export const rootReducer = combineReducers({
     cursos: cursosReducer,
     asignaturas:asignaturasReducer,
     units:unitReducer,
-    oas:oaReducer
+    oas:oaReducer,
+    colegios:colegioReducer
 })

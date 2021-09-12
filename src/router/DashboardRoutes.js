@@ -9,6 +9,7 @@ import {
   HddOutlined,
   FolderOpenOutlined,
   UsergroupAddOutlined,
+  FundOutlined,
 } from '@ant-design/icons';
 import {
     BrowserRouter as Router,
@@ -25,6 +26,7 @@ import { AignaturasPage } from '../pages/AignaturasPage';
 import { UnidadesPage } from '../pages/UnidadesPage';
 import { OAsPage } from '../pages/OAsPage';
 import { UsuariosPage } from '../pages/UsuariosPage';
+import { ColegioPage } from '../pages/ColegioPage';
 
 const {Sider, Content } = Layout;
 
@@ -50,16 +52,19 @@ export const DashBoardRoutes = () => {
                         <Menu.Item key="2" icon={<UsergroupAddOutlined />}>
                         <Link to='/usuarios'>Usuarios</Link>
                         </Menu.Item>
-                        <Menu.Item key="3" icon={<ReadOutlined  />}>
+                        <Menu.Item key="3" icon={<FundOutlined  />}>
+                        <Link to='/colegios'>Colegios</Link>
+                        </Menu.Item>
+                        <Menu.Item key="4" icon={<ReadOutlined  />}>
                         <Link to='/cursos'>Cursos</Link>
                         </Menu.Item>
-                        <Menu.Item key="4" icon={<ReconciliationOutlined />}>
+                        <Menu.Item key="5" icon={<ReconciliationOutlined />}>
                         <Link to='/asignaturas'>Asignaturas</Link>
                         </Menu.Item>
-                        <Menu.Item key="5" icon={<HddOutlined />}>
+                        <Menu.Item key="6" icon={<HddOutlined />}>
                         <Link to='/unidades'>Unidades</Link>
                         </Menu.Item>
-                        <Menu.Item key="6" icon={<FolderOpenOutlined />}>
+                        <Menu.Item key="7" icon={<FolderOpenOutlined />}>
                         <Link to='/oas'>OAs</Link>
                         </Menu.Item>
                         
@@ -74,6 +79,7 @@ export const DashBoardRoutes = () => {
                 <Switch>
                     <Route exact path='/' component={IntranetPage}/>
                     <Route path='/cursos' component={CursosPage}/>
+                    <Route path='/colegios' component={ColegioPage}/>
                     <Route path='/asignaturas' component={AignaturasPage}/>
                     <Route path='/unidades' component={UnidadesPage}/>
                     <Route path='/oas' component={OAsPage}/>

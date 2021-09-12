@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:8080/api';
+const baseURL = 'http://localhost:8081/api';
 
 export const fetchSinToken = async(endpoint, data, method ='GET') => {
     const url = `${baseURL}/${endpoint}`;
