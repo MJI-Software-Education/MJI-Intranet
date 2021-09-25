@@ -30,14 +30,14 @@ export const AignaturasPage = () => {
         setForm,
         onChange
         } = useAsignaturas({asignaturas,dispatch})
-        const {idCurso, asignatura} = form;
+        const {grado,cod,asignatura} = form;
         
         const changeCurso = (e)=>{
            setForm({
                ...form,
-               idCurso:e
+               grado:e
            })
- 
+           console.log(e)
         }
         
     return (
@@ -59,16 +59,20 @@ export const AignaturasPage = () => {
               
                <input type="text" name="asignatura" value={asignatura} onChange={onChange}  autoComplete="off"  placeholder="Asignatura"  />
                {
-                    (!bool) && <Select defaultValue='Seleccione' key={'123'} onChange={changeCurso}   style={{ width: 170 }}  name="idCurso" >
+                    (!bool) && <input type="text" name="cod" value={cod} onChange={onChange}  autoComplete="off"  placeholder="Código"  />
+                }
+               
+               {
+                    (!bool) && <Select defaultValue='Seleccione' key={'123'} onChange={changeCurso}   style={{ width: 170 }}  name="grado" >
                         {cursos.map(c=>(
-                            <Select.Option  key={c.id}   value={c.id}  >{c.curso}-{c.letra}</Select.Option>  
+                            <Select.Option  key={c.id}   value={c.grado}  >{c.curso}-{c.letra}</Select.Option>  
                         ))}   
                     </Select>
                 }
                 <br/>
                
                
-               <Button onClick={()=>onSubmit(idCurso,asignatura)} type='primary' >Guardar</Button>
+               <Button onClick={()=>onSubmit(grado,cod,asignatura)} type='primary' >Guardar</Button>
               
            </form>
                     

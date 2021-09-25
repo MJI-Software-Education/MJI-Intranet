@@ -23,6 +23,14 @@ export const useUnits = ( units = [], dispatch ) => {
 
     const columns = [
         {
+            title: 'Grado',
+            dataIndex: 'grado',
+        },
+        {
+            title: 'Asignatura',
+            dataIndex: 'asignatura',
+        },
+        {
             title: 'Unidad',
             dataIndex: 'unidad',
         },
@@ -37,14 +45,14 @@ export const useUnits = ( units = [], dispatch ) => {
         },
     ];
 
-    const onSubmit = ( idAsignatura, unidad) => {
+    const onSubmit = ( codAsignatura, unidad) => {
         if(bool){
 
-            dispatch( unitStartUpdate( unidad, id, idAsignatura ) );
+            dispatch( unitStartUpdate( unidad, id, codAsignatura ) );
 
         }else{
 
-            dispatch( unitStartAddNew( idAsignatura, unidad ) );
+            dispatch( unitStartAddNew( codAsignatura, unidad ) );
             
         }
 
@@ -62,7 +70,7 @@ export const useUnits = ( units = [], dispatch ) => {
         });
         setForm({
         
-            idAsignatura: u.idAsignatura,
+            codAsignatura: u.idAsignatura.codAsignatura,
             unidad:u.unidad,
             estado:u.status,
             id:u._id
@@ -75,6 +83,8 @@ export const useUnits = ( units = [], dispatch ) => {
     const data = units.map(
         ( u, index ) => ({
             key: u._id,
+            grado: u.idAsignatura.idCurso.curso,
+            asignatura: u.idAsignatura.asignatura,
             unidad: u.unidad,
             estado: u.status ? <div className="true">Activo</div>:<div className="false">Inactivo</div>,
             accion: [<FormOutlined key={u._id} onClick={()=>editar(u)} className="mr"  style={{color : "#1ED760"}} />,<DeleteOutlined key={ index } onClick={()=>onDelete(u._id)}  style={{color : "#FF0000"}} />,]

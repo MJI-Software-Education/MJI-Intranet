@@ -27,6 +27,18 @@ export const useOA = ( oas = [], dispatch ) => {
 
     const columns = [
         {
+            title: 'Grado',
+            dataIndex: 'grado',
+        },
+        {
+            title: 'Asignatura',
+            dataIndex: 'asignatura',
+        },
+        {
+            title: 'Unidad',
+            dataIndex: 'unidad',
+        },
+        {
             title: 'OA',
             dataIndex: 'oa',
         },
@@ -86,6 +98,9 @@ export const useOA = ( oas = [], dispatch ) => {
     const data = oas.map(
         ( oa , index ) => ({
             key: oa._id,
+            grado: oa.idUnidad.idAsignatura.idCurso.curso,
+            asignatura: oa.idUnidad.idAsignatura.asignatura,
+            unidad: oa.idUnidad.unidad,
             oa: oa.oa,
             nivel: oa.nivel,
             estado: oa.status ? <div className="true">Activo</div>:<div className="false">Inactivo</div>,

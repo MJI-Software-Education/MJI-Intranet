@@ -3,24 +3,26 @@ import { dispatcDeleteAsignatura, dispatchEditAsignatura, dispatchNewAsignatura 
 import { useEdit } from './useEdit';
 import { useForm } from './useForm';
 const initialState = {
-  idCurso:'',
+  grado:'',
   asignatura:'',
+  cod:'',
   id:''
 }
 export const useAsignaturas = ({asignaturas, dispatch}) => {
   const [form, onChange,,setForm] = useForm({
-    idCurso:'',
+    grado:'',
+    cod:'',
     asignatura:'',
 });
 const {id} = form;
   const {edit, setEdit, visible, setVisible, onClick, onEdit, close} = useEdit({setForm,initialState});
   const {open} = visible;
   const {bool} = edit;
-    const onSubmit = (idCurso,asignatura) => {
+    const onSubmit = (grado,cod,asignatura) => {
       if(bool){
-          dispatch(dispatchEditAsignatura(idCurso,asignatura,id));
+          dispatch(dispatchEditAsignatura(grado,asignatura,id));
         }else{
-          dispatch(dispatchNewAsignatura(idCurso,asignatura));
+          dispatch(dispatchNewAsignatura(grado,cod,asignatura));
       }
         setVisible({open:false});
     }
@@ -33,7 +35,8 @@ const {id} = form;
         bool:true
       });
       setForm({
-        idCurso:a.idCurso,
+        grado:a.idCurso.grado,
+        cod:a.codAsignatura,
         asignatura:a.asignatura,
         id:a.id
       });
@@ -43,6 +46,10 @@ const {id} = form;
       
     
     const columns = [
+        {
+          title: 'Curso',
+          dataIndex: 'curso',
+        },
         {
           title: 'Asignatura',
           dataIndex: 'asignatura',
@@ -62,6 +69,7 @@ const {id} = form;
       
     const data = asignaturas.map(a=>({
     key: a.id,
+    curso:a.idCurso.curso,
     asignatura: a.asignatura,
     estado: a.status ?<div className="true">Activo</div>:<div className="false">Inactivo</div>,
     accion:[<FormOutlined key={a.id} onClick={()=>editar(a)}   className="mr"  style={{color : "#1ED760"}} />,<DeleteOutlined key={`${a.id}${a.asignatura}`} onClick={()=>onDelete(a.id)}  style={{color : "#FF0000"}} />,]

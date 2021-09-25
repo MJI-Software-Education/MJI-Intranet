@@ -1,9 +1,10 @@
 import { Button, Table } from 'antd';
 import Modal from 'antd/lib/modal/Modal';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Boton } from '../components/Boton';
 import { dispatchGetUsuarios, } from '../controllers/usuarios';
+import { xmlToJson } from '../helpers/xml';
 import { useUsuarios } from '../hooks/useUsuarios';
 
 export const UsuariosPage = () => {
@@ -12,6 +13,10 @@ export const UsuariosPage = () => {
         dispatch(dispatchGetUsuarios());
     }, [dispatch]);
     
+    const [archivo, setArchivo] = useState({
+        file:''
+    });
+    const {file} = archivo;
     
     const {usuarios} = useSelector(state => state.users)
     const {columns,
@@ -26,7 +31,11 @@ export const UsuariosPage = () => {
 
         const {usuario, email, password} = form;
     
-    
+    const onChangeFile = (e) => {
+        setArchivo({
+            file:e.target.files[0]
+        })
+    }
    
     return (
         <div >
@@ -59,6 +68,27 @@ export const UsuariosPage = () => {
                 </Modal>
             <div className="flexEvenly">
             <h1>Usuarios</h1>
+            {/* <div className="addDocentes">
+            <h1>Agregar empleados</h1>
+            <div className="file-select pointer" id="src-file2">
+                <input
+                    className="pointer"
+                    type="file"
+                    id="file"
+                    name="file"
+                    value={file}
+                    placeholder="Seleccione archivo"
+                    onChange={onChangeFile}
+                />
+                </div>
+                <button
+                     onClick={
+                    xmlToJson(file)
+                }
+                >
+                Cargar usuarios
+                </button>
+            </div> */}
             <Boton text='+ Usuario' backgroundColor='#00AB55' color='white' onClick={onClick} />
             </div>
              <Table columns={columns} dataSource={data} pagination={{pageSize : 5}} scroll={{ x: 300 }}/>

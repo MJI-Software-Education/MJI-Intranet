@@ -12,10 +12,10 @@ export const dispatchGetColegios =()=>{
         }
     }
 }
-export const dispatchNewColegio =(rbd,nombre)=>{
+export const dispatchNewColegio =(idColegio,rbd,nombre,direccion,sostenedor,tipo)=>{
     return async(dispatch) =>{
-        const resp = await fetchConToken('colegio/',{rbd,nombre},'POST');
-
+        const resp = await fetchConToken('colegio/',{idColegio,rbd,nombre,direccion,sostenedor,tipo},'POST');
+        console.log(resp)
         if(resp.ok){
             dispatch(newColegio(resp.colegio));
         }else{

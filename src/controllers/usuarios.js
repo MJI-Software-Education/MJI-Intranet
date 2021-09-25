@@ -13,10 +13,10 @@ export const dispatchGetUsuarios = ()=>{
 
     }
 } 
-export const dispatchNewUsuario = (usuario, email, password)=>{
+export const dispatchNewUsuario = (data)=>{
     return async(dispatch)=>{
-        const resp =await fetchConToken('usuarios/',{usuario, email, password}, 'POST');
-      
+        const resp =await fetchConToken('usuarios/',data, 'POST');
+      console.log(resp);
         if(resp.ok){
             dispatch(newUsuario(resp.usuario));
         }else{
@@ -25,6 +25,7 @@ export const dispatchNewUsuario = (usuario, email, password)=>{
 
     }
 } 
+
 export const dispatchEditUsuario = (usuario, email,id)=>{
     return async(dispatch)=>{
         const resp =await fetchConToken(`usuarios/${id}`,{usuario, email}, 'PUT');

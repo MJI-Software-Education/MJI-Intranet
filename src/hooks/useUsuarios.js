@@ -70,7 +70,7 @@ export const useUsuarios = ({usuarios, dispatch}) => {
       
   const data = usuarios.map(u=>({
     key: u._id,
-    nombre: u.usuario,
+    nombre: u.nombre,
     email: u.email,
     estado: u.status ?<div className="true">Activo</div>:<div className="false">Baneado</div>,
     accion:[<FormOutlined key={u._id} onClick={()=>editar(u)}   className="mr"  style={{color : "#1ED760"}} />,<DeleteOutlined key={u.email} onClick={()=>onDelete(u._id)}  style={{color : "#FF0000"}} />,]

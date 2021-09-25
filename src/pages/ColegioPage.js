@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Boton } from '../components/Boton';
 import { dispatchGetColegios } from '../controllers/colegio';
 import { useColegios } from '../hooks/useColegio';
+import  Inputxs  from '../components/Inputxs';
+import CargarColegios from '../components/CargarColegios';
 
 export const ColegioPage = () => {
     const dispatch = useDispatch();
@@ -21,9 +23,14 @@ export const ColegioPage = () => {
     open,
     bool,
     form,
-    onChange
+    onChange,
+    sumarEmpleados,
+    closeEmployees,
+    employess
     } = useColegios({colegios,dispatch})
-    const {rbd, nombre} = form;
+    const {rbd, nombre,id} = form;
+    const {addEmployees} = employess;
+    
     return (
         <div>
             <Modal
@@ -39,6 +46,7 @@ export const ColegioPage = () => {
                 {
                     (bool) ?<h1>Editar</h1> :<h1>Nuevo</h1>
                 }
+                
 
                <input type="text" name="rbd" value={rbd}  onChange={onChange} autoComplete="off"  placeholder="rbd"  />
                <input type="text" name="nombre" value={nombre} onChange={onChange}  autoComplete="off"  placeholder="nombre"  />
@@ -49,8 +57,26 @@ export const ColegioPage = () => {
            </form>
                     
                 </Modal>
+            <Modal
+          centered
+          visible={addEmployees}
+          closable={true}
+          onCancel={closeEmployees}
+          okButtonProps={{block:true}}
+          footer={null}
+          width={350}
+        >  
+        <div >
+            
+                    <Inputxs dispatch={dispatch} idColegio={id} closeEmployees={closeEmployees}/> 
+        </div>
+  
+                </Modal>
             <div className="flexEvenly">
-            <h1>Colegios</h1>
+                <div>
+                    <h1>Colegios</h1>
+                    <CargarColegios dispatch={dispatch} />
+                </div>
             <Boton text='+ Colegio' backgroundColor='#00AB55' color='white' onClick={onClick} />
             </div>
             <Table columns={columns} dataSource={data} pagination={{pageSize : 5}} scroll={{ x: 300 }}/>

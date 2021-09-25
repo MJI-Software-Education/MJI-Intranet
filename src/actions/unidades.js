@@ -32,7 +32,7 @@ export const unitStartUpdate = ( unidad, _id, idAsignatura ) => {
         try {
             
             const body = await fetchConToken(`unidad/${ _id }`, { unidad, idAsignatura }, 'PUT');
-            
+            console.log(body)
             if ( body.ok ) {
                 dispatch( unitUpdated( body.unidad ) );
             } else {

@@ -23,7 +23,7 @@ export const CursosPage = () => {
     form,
     onChange
     } = useCursos({cursos,dispatch})
-    const {curso, letra} = form;
+    const {curso, letra, grado} = form;
     return (
         <div>
             <Modal
@@ -42,9 +42,10 @@ export const CursosPage = () => {
 
                <input type="text" name="curso" value={curso}  onChange={onChange} autoComplete="off"  placeholder="curso"  />
                <input type="text" name="letra" value={letra} onChange={onChange}  autoComplete="off"  placeholder="letra"  />
+               <input type="text" name="grado" value={grado} onChange={onChange}  autoComplete="off"  placeholder="grado"  />
               
                
-               <Button onClick={()=>onSubmit(letra,curso)} type='primary' >Guardar</Button>
+               <Button onClick={()=>onSubmit(letra,grado,curso)} type='primary' >Guardar</Button>
               
            </form>
                     

@@ -12,10 +12,10 @@ export const dispatchGetAsignaturas =()=>{
         }
     }
 }
-export const dispatchNewAsignatura =(idCurso,asignatura)=>{
+export const dispatchNewAsignatura =(grado,codAsignatura,asignatura)=>{
     return async(dispatch)=>{
-        const resp = await fetchConToken('asignatura/',{idCurso, asignatura},'POST');
-      
+        const resp = await fetchConToken('asignatura/',{grado,codAsignatura,asignatura},'POST');
+      console.log(resp)
         if(resp.ok){
             dispatch(newAsignatura(resp.asignatura));
         }else{
@@ -23,9 +23,9 @@ export const dispatchNewAsignatura =(idCurso,asignatura)=>{
         }
     }
 }
-export const dispatchEditAsignatura =(idCurso,asignatura,id)=>{
+export const dispatchEditAsignatura =(grado,asignatura,id)=>{
     return async(dispatch)=>{
-        const resp = await fetchConToken(`asignatura/${id}`,{idCurso, asignatura},'PUT');
+        const resp = await fetchConToken(`asignatura/${id}`,{grado, asignatura},'PUT');
         if(resp.ok){
             dispatch(editAsignatura(resp.asignatura));
         }else{

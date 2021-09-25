@@ -161,4 +161,30 @@ select{
   outline: none;
   padding: 10px;
 }
+.addDocentes{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ 
+}
+.addDocentes button{
+  background-color: #00AB55;
+  color: white;
+  border: none;
+  margin-top: 5px;
+  padding: 10px 0px;
+  cursor: pointer;
+}
+.addDocentes h1{
+  text-align: center;
+}
+
+
+
+
+
+
+.pointer{
+  cursor: pointer;
+}
 

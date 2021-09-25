@@ -12,9 +12,9 @@ export const dispatchGetCursos =()=>{
         }
     }
 }
-export const dispatchNewCurso =(letra,curso)=>{
+export const dispatchNewCurso =(letra,grado,curso)=>{
     return async(dispatch) =>{
-        const resp = await fetchConToken('curso/',{letra,curso},'POST');
+        const resp = await fetchConToken('curso/',{letra,grado,curso},'POST');
 
         if(resp.ok){
             dispatch(newCurso(resp.curso));
@@ -23,9 +23,9 @@ export const dispatchNewCurso =(letra,curso)=>{
         }
     }
 }
-export const dispatchEditCurso =(letra,curso,id)=>{
+export const dispatchEditCurso =(letra,grado,curso,id)=>{
     return async(dispatch) =>{
-        const resp = await fetchConToken(`curso/${id}`,{letra,curso},'PUT');
+        const resp = await fetchConToken(`curso/${id}`,{letra,grado,curso},'PUT');
      
         if(resp.ok){
             dispatch(editCurso(resp.curso));
