@@ -58,29 +58,34 @@ export const OAsPage = ( ) => {
                 onCancel={close}
                 okButtonProps={{block:true}}
                 footer={null}
-                width={350}
+                width={550}
             >
-
-                <form className="formularios" >
-
+                <form >
                     {
                         (bool) ?<h1>Editar</h1> :<h1>Nuevo</h1>
                     }
-                    
+                <div className="formularios">
+
+                    <div>
+                    OA
                     <input type="text" name="oa" value={oa} onChange={onChange}  autoComplete="off"  placeholder="Ingrese OA"  />
+                    </div>
+                    <div>
+                    Nivel
                     <input type="text" name="nivel" value={nivel} onChange={onChange}  autoComplete="off"  placeholder="Ingrese Nivel"  />
+                    </div>
                     
                     {
-                        (!bool) && <Select defaultValue='Seleccione' key={'123'} onChange={changeUnit} style={{ width: 170 }}  name="idCurso" >
+                        (!bool) && <div><Select defaultValue='Seleccione' key={'123'} onChange={changeUnit} style={{ width: 170 }}  name="idCurso" >
                             {unidades.map(u=>(
                                 <Select.Option  key={u._id} value={u._id}> {u.unidad} </Select.Option>  
                             ))}   
-                        </Select>
+                        </Select></div>
                     }
                     <br />
-                    <Button onClick={()=>onSubmit( idUnidad, oa, nivel )} type='primary' >Guardar</Button>
-                    
+                    </div>
                 </form>
+                    <Button onClick={()=>onSubmit( idUnidad, oa, nivel )} type='primary' >Guardar</Button>
                     
             </Modal>
 

@@ -49,33 +49,36 @@ export const AignaturasPage = () => {
                 onCancel={close}
                 okButtonProps={{block:true}}
                 footer={null}
-                width={350}
+                width={550}
             >
-           <form className="formularios" >
                 {
                     (bool) ?<h1>Editar</h1> :<h1>Nuevo</h1>
                 }
+           <form >
+           <div className="formularios">
 
-              
+              <div>
+                Asignatura
                <input type="text" name="asignatura" value={asignatura} onChange={onChange}  autoComplete="off"  placeholder="Asignatura"  />
+              </div>
                {
-                    (!bool) && <input type="text" name="cod" value={cod} onChange={onChange}  autoComplete="off"  placeholder="Código"  />
+                    (!bool) && <div>Código<input type="text" name="cod" value={cod} onChange={onChange}  autoComplete="off"  placeholder="Código"  /></div>
                 }
                
                {
-                    (!bool) && <Select defaultValue='Seleccione' key={'123'} onChange={changeCurso}   style={{ width: 170 }}  name="grado" >
+                    (!bool) && <div>Curso<Select defaultValue='Seleccione' key={'123'} onChange={changeCurso}   style={{ width: 170 }}  name="grado" >
                         {cursos.map(c=>(
                             <Select.Option  key={c.id}   value={c.grado}  >{c.curso}-{c.letra}</Select.Option>  
                         ))}   
-                    </Select>
+                    </Select></div>
                 }
                 <br/>
                
                
-               <Button onClick={()=>onSubmit(grado,cod,asignatura)} type='primary' >Guardar</Button>
               
+                    </div>
+               <Button className="mt" onClick={()=>onSubmit(grado,cod,asignatura)} type='primary' >Guardar</Button>
            </form>
-                    
                 </Modal>
             <div className="flexEvenly">
             <h1>Aisgnaturas</h1>

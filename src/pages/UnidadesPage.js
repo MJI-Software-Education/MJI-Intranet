@@ -55,30 +55,32 @@ export const UnidadesPage = () => {
                 onCancel={close}
                 okButtonProps={{block:true}}
                 footer={null}
-                width={350}
+                width={550}
             >
-
-                <form className="formularios" >
-
                     {
                         (bool) ?<h1>Editar</h1> :<h1>Nuevo</h1>
                     }
-                    
+                <form  >
+                <div className="formularios">
+                    <div>
+                    Unidad
                     <input type="text" name="unidad" value={unidad} onChange={onChange}  autoComplete="off"  placeholder="Ingrese Unidad"  />
+                    </div>
+                    
 
                     {
-                        (!bool) && <Select defaultValue='Seleccione' key={'123'} onChange={changeAsign} style={{ width: 170 }}  name="idCurso" >
+                        (!bool) && <div>Asignatura<Select  defaultValue='Seleccione' key={'123'} onChange={changeAsign} style={{ width: 170 }}  name="idCurso" >
                             {asignaturas.map(a=>(
                                 <Select.Option  key={a.id} value={a.id}> {a.asignatura} </Select.Option>  
                             ))}   
-                        </Select>
+                        </Select></div>
                     }
                     <br />
 
-                    <Button onClick={()=>onSubmit( idAsignatura, unidad )} type='primary' >Guardar</Button>
                     
+                </div>
+                    <Button   onClick={()=>onSubmit( idAsignatura, unidad )} type='primary' >Guardar</Button>
                 </form>
-                    
             </Modal>
 
             <div className="flexEvenly">

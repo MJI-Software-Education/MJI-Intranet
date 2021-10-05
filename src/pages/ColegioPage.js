@@ -40,20 +40,26 @@ export const ColegioPage = () => {
           onCancel={close}
           okButtonProps={{block:true}}
           footer={null}
-          width={350}
+          width={550}
         >
-           <form className="formularios" >
                 {
                     (bool) ?<h1>Editar</h1> :<h1>Nuevo</h1>
                 }
+           <form  >
+           <div className="formularios">
                 
-
+                <div>
+                RBD
                <input type="text" name="rbd" value={rbd}  onChange={onChange} autoComplete="off"  placeholder="rbd"  />
+                </div>
+                <div>
+                Nombre
                <input type="text" name="nombre" value={nombre} onChange={onChange}  autoComplete="off"  placeholder="nombre"  />
+                </div>
               
                
+              </div>
                <Button onClick={()=>onSubmit(rbd,nombre)} type='primary' >Guardar</Button>
-              
            </form>
                     
                 </Modal>

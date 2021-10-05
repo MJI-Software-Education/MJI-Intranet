@@ -144,22 +144,37 @@ select{
   padding: 2px 5px;
 }
 .formularios{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+
+}
+.formularios div{
+  font-weight: bold;
+  color: black;
+  opacity: 0.7;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
 }
-.formularios input{
-  border-radius: 5px;
+.formularios div input{
+  border-radius: 2px;
   border: 2px solid gray;
   padding: 5px;
   color: gray;
   transition-duration: 0.2s;
   margin-bottom: 10px;
 }
-.formularios input:focus{
-  border: 2px solid green;
+.end{
+  display: flex;
+  justify-content: end;
+}
+
+
+.formularios div input:focus{
+  border: 2px solid rgb(102, 102, 161);
   outline: none;
-  padding: 10px;
+
 }
 .addDocentes{
   display: flex;
@@ -179,12 +194,21 @@ select{
   text-align: center;
 }
 
-
-
-
-
-
 .pointer{
   cursor: pointer;
 }
+.mt{
+  margin-top: 20px;
+}
+.mt-{
+  margin-top: -20px;
+}
 
+@media only screen and (max-width: 600px) {
+  .contenido{
+      grid-template-columns: auto  ;
+  }
+  .formularios{
+    grid-template-columns: auto;
+  }
+}

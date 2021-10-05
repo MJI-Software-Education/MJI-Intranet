@@ -29,7 +29,7 @@ export const UsuariosPage = () => {
         form,
         onChange} = useUsuarios({usuarios,dispatch});
 
-        const {usuario, email, password} = form;
+        const {nombre,apellidoP,apellidoM,run,telefono,grado,letra,rbd,usuario, email, password} = form;
     
     const onChangeFile = (e) => {
         setArchivo({
@@ -46,23 +46,65 @@ export const UsuariosPage = () => {
           onCancel={close}
           okButtonProps={{block:true}}
           footer={null}
-          width={350}
+          width={550}
         >
-           <form className="formularios" >
                 {
                     (bool) ?<h1>Editar</h1> :<h1>Nuevo</h1>
                 }
-                
-               
-               <input type="text" name="usuario" value={usuario}  onChange={onChange} autoComplete="off"  placeholder="Usuario"  />
-               <input type="text" name="email" value={email} onChange={onChange}  autoComplete="off"  placeholder="Email"  />
+           <form >
+               <div className ="formularios">
+               <div>Nombre
+               <input type="text" name="usuario" value={usuario}  onChange={onChange} autoComplete="off"    />
+               </div>
+               <div>
+                Email
+               <input type="text" name="email" value={email} onChange={onChange}  autoComplete="off"    />
+               </div>
+               <div>
+                Apellido paterno
+               <input type="text" name="apellidoP" value={email} onChange={onChange}  autoComplete="off"    />
+               </div>
+               <div>
+                Apellido materno
+               <input type="text" name="apellidoM" value={email} onChange={onChange}  autoComplete="off"    />
+               </div>
+               <div>
+                Run
+               <input type="text" name="run" value={email} onChange={onChange}  autoComplete="off"    />
+               </div>
+               <div>
+                Telefono
+               <input type="text" name="telefono" value={email} onChange={onChange}  autoComplete="off"    />
+               </div>
+               <div>
+                Grado
+               <input type="text" name="grado" value={email} onChange={onChange}  autoComplete="off"    />
+               </div>
+               <div>
+                Letra
+               <input type="text" name="letra" value={email} onChange={onChange}  autoComplete="off"    />
+               </div>
+               <div>
+                Usuario
+               <input type="text" name="usuario" value={email} onChange={onChange}  autoComplete="off"    />
+               </div>
+               <div>
+                RBD
+               <input type="text" name="rbd" value={email} onChange={onChange}  autoComplete="off"    />
+               </div>
                {
                    (!bool) 
-                   && <input type="text" name="password" value={password} onChange={onChange}  autoComplete="off"  placeholder="Contraseña"  />
+                   && 
+                   <div>
+                       Password
+                       <input type="text" name="password" value={password} onChange={onChange}  autoComplete="off"    />
+                   </div>
                }
                
+               </div>
+               <div className="end">
                <Button onClick={()=>onSubmit(usuario,email,password)} type='primary' >Guardar</Button>
-              
+               </div>
            </form>
                     
                 </Modal>

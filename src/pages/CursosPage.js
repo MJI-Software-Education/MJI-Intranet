@@ -33,20 +33,29 @@ export const CursosPage = () => {
           onCancel={close}
           okButtonProps={{block:true}}
           footer={null}
-          width={350}
+          width={550}
         >
-           <form className="formularios" >
                 {
                     (bool) ?<h1>Editar</h1> :<h1>Nuevo</h1>
                 }
-
+           <form >
+           <div className="formularios">
+                <div>
+                Curso
                <input type="text" name="curso" value={curso}  onChange={onChange} autoComplete="off"  placeholder="curso"  />
+                </div>
+                <div>
+                Letra
                <input type="text" name="letra" value={letra} onChange={onChange}  autoComplete="off"  placeholder="letra"  />
+                </div>
+                <div>
+                Grado
                <input type="text" name="grado" value={grado} onChange={onChange}  autoComplete="off"  placeholder="grado"  />
+                </div>
               
                
+              </div>
                <Button onClick={()=>onSubmit(letra,grado,curso)} type='primary' >Guardar</Button>
-              
            </form>
                     
                 </Modal>
