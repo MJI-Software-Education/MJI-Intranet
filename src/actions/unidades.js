@@ -78,7 +78,7 @@ export const unitStartLoading = () => {
 
         try {
             
-            const body = await fetchConToken('unidad');
+            const body = await fetchConToken('unidad/get',{},'POST');
             
             dispatch( unitLoaded( body.unidades ) );
 

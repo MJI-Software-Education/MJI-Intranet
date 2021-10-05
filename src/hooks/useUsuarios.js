@@ -6,23 +6,39 @@ const initialState = {
     usuario:'',
     email:'',
     password:'',
+    nombre:'',
+    apellidoP:'',
+    apellidoM:'',
+    run:'',
+    telefono:'',
+    grado:'',
+    letra:'',
+    rbd:'',
     id:''
 }
 export const useUsuarios = ({usuarios, dispatch}) => {
   const [form, onChange,,setForm] = useForm({
       usuario:'',
       email:'',
-      password:''
+      password:'',
+      nombre:'',
+      apellidoP:'',
+      apellidoM:'',
+      run:'',
+      telefono:'',
+      grado:'',
+      letra:'',
+      rbd:'',
   });
   const {id} = form;
   const {edit, setEdit, visible, setVisible, onClick, onEdit, close} = useEdit({setForm,initialState});
   const {open} = visible;
   const {bool} = edit;
-  const onSubmit = (usuario,email,password) => {
+  const onSubmit = (data) => {
     if(bool){
-      dispatch(dispatchEditUsuario(usuario,email,id));
+      dispatch(dispatchEditUsuario(data,id));
     }else{
-      dispatch(dispatchNewUsuario(usuario,email,password));
+      dispatch(dispatchNewUsuario(data));
     }
       setVisible({open:false});
   }

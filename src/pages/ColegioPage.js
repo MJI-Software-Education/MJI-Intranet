@@ -24,7 +24,6 @@ export const ColegioPage = () => {
     bool,
     form,
     onChange,
-    sumarEmpleados,
     closeEmployees,
     employess
     } = useColegios({colegios,dispatch})

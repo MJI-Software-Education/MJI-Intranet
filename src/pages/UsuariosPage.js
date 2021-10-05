@@ -1,10 +1,9 @@
 import { Button, Table } from 'antd';
 import Modal from 'antd/lib/modal/Modal';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Boton } from '../components/Boton';
 import { dispatchGetUsuarios, } from '../controllers/usuarios';
-import { xmlToJson } from '../helpers/xml';
 import { useUsuarios } from '../hooks/useUsuarios';
 
 export const UsuariosPage = () => {
@@ -12,11 +11,6 @@ export const UsuariosPage = () => {
     useEffect(() => {
         dispatch(dispatchGetUsuarios());
     }, [dispatch]);
-    
-    const [archivo, setArchivo] = useState({
-        file:''
-    });
-    const {file} = archivo;
     
     const {usuarios} = useSelector(state => state.users)
     const {columns,
@@ -31,11 +25,6 @@ export const UsuariosPage = () => {
 
         const {nombre,apellidoP,apellidoM,run,telefono,grado,letra,rbd,usuario, email, password} = form;
     
-    const onChangeFile = (e) => {
-        setArchivo({
-            file:e.target.files[0]
-        })
-    }
    
     return (
         <div >
@@ -54,7 +43,7 @@ export const UsuariosPage = () => {
            <form >
                <div className ="formularios">
                <div>Nombre
-               <input type="text" name="usuario" value={usuario}  onChange={onChange} autoComplete="off"    />
+               <input type="text" name="nombre" value={nombre}  onChange={onChange} autoComplete="off"    />
                </div>
                <div>
                 Email
@@ -62,35 +51,35 @@ export const UsuariosPage = () => {
                </div>
                <div>
                 Apellido paterno
-               <input type="text" name="apellidoP" value={email} onChange={onChange}  autoComplete="off"    />
+               <input type="text" name="apellidoP" value={apellidoP} onChange={onChange}  autoComplete="off"    />
                </div>
                <div>
                 Apellido materno
-               <input type="text" name="apellidoM" value={email} onChange={onChange}  autoComplete="off"    />
+               <input type="text" name="apellidoM" value={apellidoM} onChange={onChange}  autoComplete="off"    />
                </div>
                <div>
                 Run
-               <input type="text" name="run" value={email} onChange={onChange}  autoComplete="off"    />
+               <input type="text" name="run" value={run} onChange={onChange}  autoComplete="off"    />
                </div>
                <div>
                 Telefono
-               <input type="text" name="telefono" value={email} onChange={onChange}  autoComplete="off"    />
+               <input type="text" name="telefono" value={telefono} onChange={onChange}  autoComplete="off"    />
                </div>
                <div>
                 Grado
-               <input type="text" name="grado" value={email} onChange={onChange}  autoComplete="off"    />
+               <input type="text" name="grado" value={grado} onChange={onChange}  autoComplete="off"    />
                </div>
                <div>
                 Letra
-               <input type="text" name="letra" value={email} onChange={onChange}  autoComplete="off"    />
+               <input type="text" name="letra" value={letra} onChange={onChange}  autoComplete="off"    />
                </div>
                <div>
                 Usuario
-               <input type="text" name="usuario" value={email} onChange={onChange}  autoComplete="off"    />
+               <input type="text" name="usuario" value={usuario} onChange={onChange}  autoComplete="off"    />
                </div>
                <div>
                 RBD
-               <input type="text" name="rbd" value={email} onChange={onChange}  autoComplete="off"    />
+               <input type="text" name="rbd" value={rbd} onChange={onChange}  autoComplete="off"    />
                </div>
                {
                    (!bool) 
@@ -103,7 +92,7 @@ export const UsuariosPage = () => {
                
                </div>
                <div className="end">
-               <Button onClick={()=>onSubmit(usuario,email,password)} type='primary' >Guardar</Button>
+               <Button onClick={()=>onSubmit({nombre,apellidoP,apellidoM,run,telefono,grado,letra,rbd,usuario, email, password})} type='primary' >Guardar</Button>
                </div>
            </form>
                     

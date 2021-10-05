@@ -6,6 +6,7 @@ import { fetchConToken, fetchSinToken } from "../helpers/fetch"
 export const dispatchLogin = (email, password) => {
    
     return async(dispatch)=>{
+        localStorage.setItem('conexion','MJIServer');
         const resp = await fetchSinToken('auth',{email, password},'POST');
         if(resp.ok){
             localStorage.setItem('token',resp.token);
@@ -19,7 +20,8 @@ export const dispatchLogin = (email, password) => {
 }
 export const renew = () => {
     return async(dispatch)=>{
-        const resp = await fetchConToken('auth/renew');
+        const resp = await fetchConToken('auth/renew',{},'POST');
+
         if(resp.ok){
             localStorage.setItem('token',resp.token);
             dispatch(login(resp.usuario));

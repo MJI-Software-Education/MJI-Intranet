@@ -4,7 +4,7 @@ import { fetchConToken } from "../helpers/fetch"
 
 export const dispatchGetAsignaturas =()=>{
     return async(dispatch)=>{
-        const resp = await fetchConToken('asignatura/');
+        const resp = await fetchConToken('asignatura/get',{},'POST');
         if(resp.ok){
             dispatch(getAsignaturas(resp.asignaturas));
         }else{

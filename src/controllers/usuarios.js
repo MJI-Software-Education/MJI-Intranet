@@ -4,7 +4,7 @@ import { fetchConToken } from "../helpers/fetch"
 
 export const dispatchGetUsuarios = ()=>{
     return async(dispatch)=>{
-        const resp =await fetchConToken('usuarios/');
+        const resp =await fetchConToken('usuarios/get',{},'POST');
         if(resp.ok){
             dispatch(getUsuarios(resp.usuarios));
         }else{
@@ -16,6 +16,7 @@ export const dispatchGetUsuarios = ()=>{
 export const dispatchNewUsuario = (data)=>{
     return async(dispatch)=>{
         const resp =await fetchConToken('usuarios/',data, 'POST');
+      console.log('aqui');
       console.log(resp);
         if(resp.ok){
             dispatch(newUsuario(resp.usuario));
@@ -26,9 +27,9 @@ export const dispatchNewUsuario = (data)=>{
     }
 } 
 
-export const dispatchEditUsuario = (usuario, email,id)=>{
+export const dispatchEditUsuario = (data,id)=>{
     return async(dispatch)=>{
-        const resp =await fetchConToken(`usuarios/${id}`,{usuario, email}, 'PUT');
+        const resp =await fetchConToken(`usuarios/${id}`,data, 'PUT');
        
         if(resp.ok){
             dispatch(editUsuario(resp.usuario));

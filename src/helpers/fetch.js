@@ -1,6 +1,8 @@
 const baseURL = 'http://localhost:8080/api';
 
-export const fetchSinToken = async(endpoint, data, method ='GET') => {
+export const fetchSinToken = async(endpoint, data ={}, method ='GET') => {
+    const conexion = localStorage.getItem('conexion') || '';
+    data.conexion = conexion;
     const url = `${baseURL}/${endpoint}`;
     if(method === 'GET'){
         const resp = await fetch(url);
@@ -16,7 +18,10 @@ export const fetchSinToken = async(endpoint, data, method ='GET') => {
         return await resp.json();
     }
 }
-export const fetchConToken = async(endpoint, data, method ='GET') => {
+export const fetchConToken = async(endpoint, data = {conexion:''}, method ='GET') => {
+    const conexion = localStorage.getItem('conexion') || '';
+    console.log(conexion)
+    data.conexion = conexion;
     const url = `${baseURL}/${endpoint}`;
     const token = localStorage.getItem('token');
     if(method === 'GET'){

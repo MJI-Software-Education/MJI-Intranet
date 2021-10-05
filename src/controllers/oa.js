@@ -75,7 +75,7 @@ export const oaStartLoading = () => {
 
         try {
             
-            const body = await fetchConToken('oa');
+            const body = await fetchConToken('oa/get',{},'POST');
             
             dispatch( oaLoaded( body.oas ) );
 

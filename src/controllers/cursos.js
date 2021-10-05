@@ -4,7 +4,7 @@ import { fetchConToken } from "../helpers/fetch";
 
 export const dispatchGetCursos =()=>{
     return async(dispatch) =>{
-        const resp = await fetchConToken('curso/');
+        const resp = await fetchConToken('curso/get',{},'POST');
         if(resp.ok){
             dispatch(getCursos(resp.cursos));
         }else{
