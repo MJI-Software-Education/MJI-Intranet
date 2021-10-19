@@ -8,11 +8,11 @@ export const useEdit = ({setForm,initialState}) => {
         open:false
     });
       const onClick = () => {
-        setVisible({open:true});
-        setEdit({
-            bool:false
-        });
-        setForm(initialState);
+          setVisible({open:true});
+          setEdit({
+              bool:false
+            });
+            setForm(initialState);
     }
     const onEdit = () => {
         setVisible({open:true});

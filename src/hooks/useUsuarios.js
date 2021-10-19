@@ -16,7 +16,7 @@ const initialState = {
     rbd:'',
     id:''
 }
-export const useUsuarios = ({usuarios, dispatch}) => {
+export const useUsuarios = ({usuarios, dispatch, colegio}) => {
   const [form, onChange,,setForm] = useForm({
       usuario:'',
       email:'',
@@ -43,7 +43,7 @@ export const useUsuarios = ({usuarios, dispatch}) => {
       setVisible({open:false});
   }
   const onDelete = (id) => {
-      dispatch(dispatchDeleteUsuario(id));
+      dispatch(dispatchDeleteUsuario(id,colegio));
       setVisible({open:false});
   }
   const editar = (u)=>{
@@ -51,8 +51,11 @@ export const useUsuarios = ({usuarios, dispatch}) => {
       bool:true
     });
     setForm({
-    
-      usuario:u.usuario,
+      nombre:u.nombre,
+      apellidoP:u.apellidoP,
+      apellidoM:u.apellidoM,
+      run:u.run,
+      telefono:u.telefono,
       email:u.email,
       password:u.password,
       id:u._id

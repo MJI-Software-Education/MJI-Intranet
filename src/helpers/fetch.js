@@ -3,6 +3,7 @@ const baseURL = 'http://localhost:8080/api';
 export const fetchSinToken = async(endpoint, data ={}, method ='GET') => {
     const conexion = localStorage.getItem('conexion') || '';
     data.conexion = conexion;
+    data.administrador = true;
     const url = `${baseURL}/${endpoint}`;
     if(method === 'GET'){
         const resp = await fetch(url);
@@ -20,8 +21,11 @@ export const fetchSinToken = async(endpoint, data ={}, method ='GET') => {
 }
 export const fetchConToken = async(endpoint, data = {conexion:''}, method ='GET') => {
     const conexion = localStorage.getItem('conexion') || '';
-    console.log(conexion)
     data.conexion = conexion;
+    data.administrador = true;
+    if(data.organizacion){
+        data.conexion = data.organizacion;
+    }
     const url = `${baseURL}/${endpoint}`;
     const token = localStorage.getItem('token');
     if(method === 'GET'){

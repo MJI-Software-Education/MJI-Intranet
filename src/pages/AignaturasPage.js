@@ -37,7 +37,7 @@ export const AignaturasPage = () => {
                ...form,
                grado:e
            })
-           console.log(e)
+ 
         }
         
     return (

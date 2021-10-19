@@ -73,7 +73,7 @@ export const ColegioPage = () => {
         >  
         <div >
             
-                    <Inputxs dispatch={dispatch} idColegio={id} closeEmployees={closeEmployees}/> 
+                    <Inputxs dispatch={dispatch} idColegio={id} organizacion={nombre} rbd={rbd} closeEmployees={closeEmployees}/> 
         </div>
   
                 </Modal>

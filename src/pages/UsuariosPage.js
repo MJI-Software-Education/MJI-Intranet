@@ -1,18 +1,37 @@
 import { Button, Table } from 'antd';
 import Modal from 'antd/lib/modal/Modal';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Boton } from '../components/Boton';
+import { dispatchGetColegiosActive } from '../controllers/activos';
 import { dispatchGetUsuarios, } from '../controllers/usuarios';
 import { useUsuarios } from '../hooks/useUsuarios';
-
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 320,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+  }));
 export const UsuariosPage = () => {
+    const [colegio, setColegio] = useState('MJIServer');
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(dispatchGetUsuarios());
+        dispatch(dispatchGetUsuarios(colegio));
+    }, [colegio]);
+    useEffect(() => {
+        dispatch(dispatchGetColegiosActive());       
     }, [dispatch]);
-    
-    const {usuarios} = useSelector(state => state.users)
+
+    const {activos:colegios} = useSelector(state=>state.activos);
+    const {usuarios} = useSelector(state => state.users);
     const {columns,
         data,
         onClick,
@@ -21,11 +40,15 @@ export const UsuariosPage = () => {
         open,
         bool,
         form,
-        onChange} = useUsuarios({usuarios,dispatch});
+        onChange} = useUsuarios({usuarios,dispatch,colegio});
 
         const {nombre,apellidoP,apellidoM,run,telefono,grado,letra,rbd,usuario, email, password} = form;
     
-   
+        const classes = useStyles();
+  
+        const handleChange = (event) => {
+            setColegio(event.target.value);
+        };
     return (
         <div >
             <Modal
@@ -65,8 +88,14 @@ export const UsuariosPage = () => {
                 Telefono
                <input type="text" name="telefono" value={telefono} onChange={onChange}  autoComplete="off"    />
                </div>
-               <div>
-                Grado
+              
+               
+               {
+                   (!bool) 
+                   && 
+                   <>
+                    <div>
+                    Grado
                <input type="text" name="grado" value={grado} onChange={onChange}  autoComplete="off"    />
                </div>
                <div>
@@ -81,18 +110,15 @@ export const UsuariosPage = () => {
                 RBD
                <input type="text" name="rbd" value={rbd} onChange={onChange}  autoComplete="off"    />
                </div>
-               {
-                   (!bool) 
-                   && 
                    <div>
                        Password
                        <input type="text" name="password" value={password} onChange={onChange}  autoComplete="off"    />
-                   </div>
+                   </div></>
                }
                
                </div>
                <div className="end">
-               <Button onClick={()=>onSubmit({nombre,apellidoP,apellidoM,run,telefono,grado,letra,rbd,usuario, email, password})} type='primary' >Guardar</Button>
+               <Button onClick={()=>onSubmit({nombre,apellidoP,apellidoM,run,telefono,grado,letra,rbd,usuario, email, password,organizacion:colegio})} type='primary' >Guardar</Button>
                </div>
            </form>
                     
@@ -120,6 +146,24 @@ export const UsuariosPage = () => {
                 Cargar usuarios
                 </button>
             </div> */}
+                                <FormControl variant="filled" className={classes.formControl}>
+                            <InputLabel id="demo-simple-select-filled-label">Curso</InputLabel>
+                            <Select
+                            labelId="demo-simple-select-filled-label"
+                            id="demo-simple-select-filled"
+                            value={colegio}
+                            onChange={handleChange}
+                            >
+                            <MenuItem value="MJIServer">
+                                <em>MJI</em>
+                            </MenuItem>
+                            {
+                                colegios.map(colegio=>(
+                                    <MenuItem key={colegio.id} value={colegio.nombre.replace(/ /g, "")}>{colegio.nombre}</MenuItem>
+                                ))
+                            }
+                            </Select>
+                        </FormControl>
             <Boton text='+ Usuario' backgroundColor='#00AB55' color='white' onClick={onClick} />
             </div>
              <Table columns={columns} dataSource={data} pagination={{pageSize : 5}} scroll={{ x: 300 }}/>

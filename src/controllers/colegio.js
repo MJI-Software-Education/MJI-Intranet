@@ -4,7 +4,7 @@ import { fetchConToken } from "../helpers/fetch";
 
 export const dispatchGetColegios =()=>{
     return async(dispatch) =>{
-        const resp = await fetchConToken('colegio/get',{},'POST');
+        const resp = await fetchConToken('colegio/getAll',{},'POST');
         if(resp.ok){
             dispatch(getColegios(resp.colegios));
         }else{
@@ -15,7 +15,6 @@ export const dispatchGetColegios =()=>{
 export const dispatchNewColegio =(idColegio,rbd,nombre,direccion,sostenedor,tipo)=>{
     return async(dispatch) =>{
         const resp = await fetchConToken('colegio/',{idColegio,rbd,nombre,direccion,sostenedor,tipo},'POST');
-        console.log(resp)
         if(resp.ok){
             dispatch(newColegio(resp.colegio));
         }else{

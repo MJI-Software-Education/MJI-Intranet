@@ -20,10 +20,10 @@ class CargarColegios extends React.Component {
     e.stopPropagation();
     e.preventDefault();
     var file = e.target.files[0];
-    console.log(file);
+    // console.log(file);
     this.setState({ file });
 
-    console.log(this.state.file);
+    // console.log(this.state.file);
   }
 
   readFile(e) {

@@ -49,7 +49,9 @@ const {id} = form;
         addEmployees:true
       });
       setForm({
-        id:c.id
+        id:c.id,
+        rbd:c.rbd,
+        nombre:c.nombre,
       });
     }
     const closeEmployees = (c)=>{

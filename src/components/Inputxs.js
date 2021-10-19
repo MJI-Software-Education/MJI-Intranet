@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import Swal from "sweetalert2";
 import * as XLSX from "xlsx";
-import {  dispatchNewUsuario, usuarioExcel } from "../controllers/usuarios";
+import {  dispatchNewDocente, usuarioExcel } from "../controllers/usuarios";
 
 class Inputxs extends React.Component {
   constructor(props) {
@@ -21,10 +20,10 @@ class Inputxs extends React.Component {
     e.stopPropagation();
     e.preventDefault();
     var file = e.target.files[0];
-    console.log(file);
+    // console.log(file);
     this.setState({ file });
 
-    console.log(this.state.file);
+    // console.log(this.state.file);
   }
 
   readFile(e) {
@@ -69,20 +68,19 @@ class Inputxs extends React.Component {
     }
     console.log()
     //return result; //JavaScript object
-    result.forEach(r =>{
-        
-    })
     const promises = result.map(r  => {
         r.password = `${r.nombre}`;
         r.idColegio=this.props.idColegio;
-        this.props.dispatch(dispatchNewUsuario(r)); 
+        r.organizacion=this.props.organizacion.replace(/ /g, "");
+        r.rbd = this.props.rbd;
+        this.props.dispatch(dispatchNewDocente(r)); 
     });
     
     
     Promise.all(promises)
            .then(r => {
             this.props.closeEmployees();
-            Swal.fire('Success','Usuarios creados','success');
+
            });
     return JSON.stringify(result); 
   }
