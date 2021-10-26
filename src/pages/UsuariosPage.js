@@ -43,10 +43,6 @@ export const UsuariosPage = () => {
         form,
         onChange} = useUsuarios({usuarios,dispatch,colegio});
 
-        useEffect(() => {
-            blockRun();
-        }, [bool])
-
         const {nombre,apellidoP,apellidoM,run,telefono,grado,letra,rbd,usuario, email, password} = form;
     
         const classes = useStyles();
@@ -143,15 +139,6 @@ export const UsuariosPage = () => {
             onSubmit({nombre,apellidoP,apellidoM,run,telefono,grado,letra,rbd,usuario, email, password,organizacion:colegio});
         }
 
-        const blockRun = () => {
-
-            if (bool) {
-                document.getElementById("run1").readOnly = true;
-            } else {
-                document.getElementById("run1").readOnly = false;
-            }
-        }
-
     return (
         <div >
             <Modal
@@ -190,7 +177,11 @@ export const UsuariosPage = () => {
                         </div>
                         <div>
                             Run
-                            <input type="text" id="run1" onBlur={handleValidateRunUser} name="run" value={run} onChange={onChange} autoComplete="off" placeholder="XXXXXXXX-X"/>
+                            {
+                                bool 
+                                ? <input type="text" id="run1" onBlur={handleValidateRunUser} name="run" value={run} onChange={onChange} autoComplete="off" placeholder="XXXXXXXX-X" disabled />
+                                : <input type="text" id="run1" onBlur={handleValidateRunUser} name="run" value={run} onChange={onChange} autoComplete="off" placeholder="XXXXXXXX-X" />
+                            }
                             <span id="run"></span>
                         </div>
                         <div>

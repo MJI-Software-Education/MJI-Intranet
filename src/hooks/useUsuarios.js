@@ -56,6 +56,7 @@ export const useUsuarios = ({usuarios, dispatch, colegio}) => {
       apellidoM:u.apellidoM,
       run:u.run,
       telefono:u.telefono,
+      usuario:u.usuario || '',
       email:u.email,
       password:u.password,
       id:u._id
